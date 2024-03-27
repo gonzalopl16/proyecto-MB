@@ -9,6 +9,12 @@ class Feature extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        'value',
+        'descripcion',
+        'option_id'
+    ];
+
     //Relacion uno a muchos inversa
     public function option(){
         return $this->belongsTo(Option::class);

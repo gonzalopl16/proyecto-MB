@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('descripcion');
             $table->string('image_path');
             $table->float('price');
-            $table->foreignId('subcategory_id')->constrained();           
+            $table->foreignId('sub_category_id')->constrained();           
             $table->timestamps();
         });
     }

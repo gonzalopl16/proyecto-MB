@@ -9,6 +9,11 @@ class Option extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        'name',
+        'type'
+    ];
+
     //Relacion muchos a muchos
     public function products(){
         return $this->belongsToMany(Product::class)
