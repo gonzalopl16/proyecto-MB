@@ -4,7 +4,14 @@
             'icon' => 'fa-solid fa-gauge',
             'name' => 'Dashboard',
             'route' => 'admin.dashboard',
-            'active' => request()->routeIs('admin.dashboard')
+            'active' => request()->routeIs('admin.dashboard'),
+        ],
+        [
+            //Familia de Productos
+            'name' => 'Familias',
+            'icon' => 'fa-solid fa-box-open',
+            'route' => route('admin.families.index'),
+            'active' => request()->routeIs('admin.families.*') ,
         ]
     ];
 @endphp
