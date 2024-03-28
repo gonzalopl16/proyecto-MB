@@ -3,7 +3,7 @@
         [
             'icon' => 'fa-solid fa-gauge',
             'name' => 'Dashboard',
-            'route' => 'admin.dashboard',
+            'route' => route('admin.dashboard'),
             'active' => request()->routeIs('admin.dashboard'),
         ],
         [
