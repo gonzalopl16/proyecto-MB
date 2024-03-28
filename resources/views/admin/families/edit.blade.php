@@ -13,6 +13,8 @@
 ]">
 
     <div class="card">
+        <x-validation-errors class="mb-4">
+        </x-validation-errors>
         <form action="{{ route('admin.families.update', $family) }}" method="POST">
             @method('PUT')
             @csrf
