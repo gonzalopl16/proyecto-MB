@@ -20,7 +20,7 @@ class Product extends Model
 
     //Relacion uno a muchos inversa
     public function subcategory(){
-        return $this->belongsTo(Subcategory::class);
+        return $this->belongsTo(SubCategory::class);
     }
 
     //Relacion uno a muchos

@@ -46,11 +46,12 @@ class SubcategoryEdit extends Component
             'subcategoryEdit.name' => 'nombre'
         ]);
         $this->subcategory->update($this->subcategoryEdit);
-        $this->dispatch('swal',[
+        session()->flash('swal',[
             'icon' => 'success',
             'title' => 'Ejecución exitosa',
             'text' => 'Subcategoría creada correctamente'  
         ]);
+        redirect()->route('admin.subcategories.index');
     }
 
     public function render()

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('sku');
             $table->string('name');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->string('image_path');
             $table->float('price');
             $table->foreignId('sub_category_id')->constrained();           
