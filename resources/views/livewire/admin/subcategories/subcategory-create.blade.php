@@ -42,30 +42,4 @@
             </div>
         </div>
     </form>
-
-    <form action="{{ route('admin.subcategories.destroy', $subcategory) }}" method="POST" id="delete-form">
-        @csrf
-        @method('DELETE')
-    </form>
-
-    @push('js')
-    <script>
-        function confirmDelete() {
-            Swal.fire({
-                title: "Estas seguro?",
-                text: "No podras lo revertir!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Si, eliminalo!",
-                cancelButtonText: "Cancelar"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-form').submit();
-                }
-            });
-        }
-    </script>
-@endpush
 </div>

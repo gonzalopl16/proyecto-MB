@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678'),
         ]);
         $this->call([
-            FamilySeeder::class
+            FamilySeeder::class,
+            OptionSeeder::class
         ]);
 
         Product::factory(150)->create();
