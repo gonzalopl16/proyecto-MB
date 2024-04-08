@@ -18,12 +18,12 @@
             'active' => request()->routeIs('admin.families.*') ,
         ],[
            'name' => 'Categorias',
-           'icon' => 'fa-solid fa-box-open',
+           'icon' => 'fa-solid fa-layer-group',
            'route' => route('admin.categories.index'),
            'active' => request()->routeIs('admin.categories.*'),
         ],[
            'name' => 'Subcategorias',
-           'icon' => 'fa-solid fa-box-open',
+           'icon' => 'fa-solid fa-table-list',
            'route' => route('admin.subcategories.index'),
            'active' => request()->routeIs('admin.subcategories.*'),
         ],[

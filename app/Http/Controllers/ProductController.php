@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -72,5 +73,9 @@ class ProductController extends Controller
             'text' => 'producto eliminado correctamente'
         ]);
         return redirect()->route('admin.products.index');
+    }
+
+    public function variants(Product $product, Variant $variant){
+        return view('admin.products.variants',compact('product','variant'));
     }
 }

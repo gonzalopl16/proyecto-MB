@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
