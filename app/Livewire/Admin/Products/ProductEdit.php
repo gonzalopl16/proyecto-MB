@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
@@ -26,7 +27,7 @@ class ProductEdit extends Component
 
     public function mount($product){
         $sub = SubCategory::find($product->sub_category_id);
-        $this->productEdit = $product->only('sku', 'name', 'descripcion', 'image_path', 'price','sub_category_id');
+        $this->productEdit = $product->only('sku', 'name', 'descripcion', 'image_path', 'price', 'stock','sub_category_id');
         $this->families = Family::all();
         $this->category_id = $sub->category->id;
         $this->family_id = $sub->category->family->id;
@@ -42,6 +43,11 @@ class ProductEdit extends Component
                 ]);
             }
         });
+    }
+
+    #[On('variant-generate')]
+    public function updateProduct(){
+        $this->product = $this->product->fresh();
     }
 
     public function updatedFamilyId(){
@@ -69,13 +75,15 @@ class ProductEdit extends Component
             'productEdit.sku' => 'required|unique:products,sku,'.$this->product->id,
             'productEdit.name' => 'required|max:255',
             'productEdit.descripcion' => 'required',
-            'productEdit.price' => '',
+            'productEdit.price' => 'required|numeric|min:0',
+            'product.stock' => 'required|numeric|min:0',
             'productEdit.sub_category_id' => 'required|exists:sub_categories,id',
         ],[],[
             'product.sku' => 'codigo',
             'product.name' => 'nombre',
             'product.descripcion' => 'descripción',
             'product.price' => 'precio',
+            'product.stock' => 'stock',
             'product.sub_category_id' => 'subcategoria',
         ]);
 

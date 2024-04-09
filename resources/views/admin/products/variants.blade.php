@@ -16,60 +16,78 @@
     ],
 ]">
 
-<form method="POST">
-    @csrf
-    <div class="relative mb-6">
-        <figure>
-            <img class="aspect-[16/9] w-full object-cover object-center" src="{{ $variant->image }}" alt="" id="img">
-        </figure>
-
-        <div class="absolute top-8 right-8">
-            <label class="flex items-center bg-white px-4 py-2 rounded-lg cursor-pointer">
-                <i class="fas fa-camera mr-2"></i>
-                Actualizar Imagen
-                <input class="hidden" type="file" accept="image/*" name="image" onchange="previewImage(event,'#img')">
-            </label>
-        </div>
+    <form method="POST" action="{{route('admin.products.variantUpdate', [$product, $variant])}}" enctype="multipart/form-data">
         
-    </div>
+        @csrf
 
-    <div class="card">
+        @method('PUT')
 
-        <div class="mb-4">
-            <x-label class="mb-2">
-                Código (SKU)
-            </x-label>
-            <x-input class="w-full" name="sku" value="{{old('sku',$variant->sku)}}" placeholder="SKU"/>
+        <x-validation-errors class="mb-4"></x-validation-errors>
+        <div class="relative mb-6">
+            <figure>
+                <img class="aspect-[16/9] w-full object-cover object-center" src="{{ $variant->image }}" alt=""
+                    id="img">
+            </figure>
+
+            <div class="absolute top-8 right-8">
+                <label class="flex items-center bg-white px-4 py-2 rounded-lg cursor-pointer">
+                    <i class="fas fa-camera mr-2"></i>
+                    Actualizar Imagen
+                    <input class="hidden" type="file" accept="image/*" name="image"
+                        onchange="previewImage(event,'#img')">
+                </label>
+            </div>
+
         </div>
-    </div>
-    
 
-</form>
+        <div class="card">
 
-@push('js')
-<script>
-    function previewImage(event, querySelector) {
+            <div class="mb-4">
+                <x-label class="mb-2">
+                    Código (SKU)
+                </x-label>
+                <x-input class="w-full" name="sku" value="{{ old('sku', $variant->sku) }}" placeholder="Ingrese su codigo - SKU" />
+            </div>
+            <div class="mb-4">
+                <x-label class="mb-2">
+                    Stock
+                </x-label>
+                <x-input class="w-full" name="stock" value="{{ old('stock', $variant->stock) }}"
+                    placeholder="Ingrese el stock" />
+            </div>
+            <div class="flex justify-end">
+                <x-button>
+                    Actualizar
+                </x-button>
+            </div>
+        </div>
 
-        //Recuperamos el input que desencadeno la acción
-        const input = event.target;
+    </form>
 
-        //Recuperamos la etiqueta img donde cargaremos la imagen
-        $imgPreview = document.querySelector(querySelector);
+    @push('js')
+        <script>
+            function previewImage(event, querySelector) {
 
-        // Verificamos si existe una imagen seleccionada
-        if (!input.files.length) return
+                //Recuperamos el input que desencadeno la acción
+                const input = event.target;
 
-        //Recuperamos el archivo subido
-        file = input.files[0];
+                //Recuperamos la etiqueta img donde cargaremos la imagen
+                $imgPreview = document.querySelector(querySelector);
 
-        //Creamos la url
-        objectURL = URL.createObjectURL(file);
+                // Verificamos si existe una imagen seleccionada
+                if (!input.files.length) return
 
-        //Modificamos el atributo src de la etiqueta img
-        $imgPreview.src = objectURL;
+                //Recuperamos el archivo subido
+                file = input.files[0];
 
-    }
-</script>
-@endpush
+                //Creamos la url
+                objectURL = URL.createObjectURL(file);
+
+                //Modificamos el atributo src de la etiqueta img
+                $imgPreview.src = objectURL;
+
+            }
+        </script>
+    @endpush
 
 </x-admin-layout>
