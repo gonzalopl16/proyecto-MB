@@ -17,3 +17,7 @@
 .btn-green{
     @apply bg-green-500 text-white hover:bg-green-700;
 }
+
+.btn-brown{
+    @apply bg-[#996946] text-white hover:bg-[#422d1f];
+}
