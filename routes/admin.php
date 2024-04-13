@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CoverController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\ProductController;
@@ -28,3 +29,5 @@ Route::get('products/{product}/variants/{variant}',[ProductController::class,'va
 Route::put('products/{product}/variants/{variant}',[ProductController::class,'variantsUpdate'])
     ->name('products.variantUpdate')
     ->scopeBindings(); 
+
+Route::resource('covers', CoverController::class);

@@ -13,8 +13,17 @@
                         </path>
                     </svg>
                 </button>
-                <a href="{{route('admin.dashboard')}}" class="flex ms-2 md:me-24">
-                    <img src="{{asset('images/logos/LogoMB.png')}}" class="h-8 me-3" alt="MB Logo" />
+                <a href="{{route('admin.dashboard')}}" class="flex ms-2 ">
+                    <h1 class="text-white">
+                        <a href="/" class="inline-flex flex-col items-end">
+                            <span class="text-xl md:text-3xl leading-5 md:leading-6 font-semibold">
+                                MB Watch
+                            </span>
+                            <span class="text-xs">
+                                Tienda Online
+                            </span>
+                        </a>
+                    </h1>
                 </a>
             </div>
             <div class="flex items-center">

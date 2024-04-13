@@ -18,19 +18,24 @@
             'active' => request()->routeIs('admin.families.*') ,
         ],[
            'name' => 'Categorias',
-           'icon' => 'fa-solid fa-layer-group',
+           'icon' => 'fa-solid fa-tags',
            'route' => route('admin.categories.index'),
            'active' => request()->routeIs('admin.categories.*'),
         ],[
            'name' => 'Subcategorias',
-           'icon' => 'fa-solid fa-table-list',
+           'icon' => 'fa-solid fa-tag',
            'route' => route('admin.subcategories.index'),
            'active' => request()->routeIs('admin.subcategories.*'),
         ],[
            'name' => 'Productos',
-           'icon' => 'fa-solid fa-box-open',
+           'icon' => 'fa-solid fa-box',
            'route' => route('admin.products.index'),
            'active' => request()->routeIs('admin.products.*'),
+        ],[
+           'name' => 'Portadas',
+           'icon' => 'fa-solid fa-images',
+           'route' => route('admin.covers.index'),
+           'active' => request()->routeIs('admin.covers.*'),
         ]
     ];
 @endphp
