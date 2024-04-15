@@ -18,7 +18,7 @@
                     </a>
                 </h1>
                 <div class="flex-1 hidden md:block">
-                    <x-input class="w-full" placeholder="Buscar por producto, categoría o marca"></x-input>
+                    <x-input oninput="search(this.value)" class="w-full" placeholder="Buscar por producto, categoría o marca"></x-input>
                 </div>
 
                 <div class="flex items-center space-x-4 md:space-x-8">
@@ -71,9 +71,9 @@
                 </div>
             </div>
             <div class="mt-4 md:hidden">
-                    <x-input class="w-full" placeholder="Buscar por producto, categoría o marca"></x-input>
+                    <x-input oninput="search(this.value)" class="w-full" placeholder="Buscar por producto, categoría o marca"></x-input>
             </div>
-        </x-container>
+        </x-container> 
     </header>
 
     <div x-show="open" x-on:click="open = false" style="display: none" class="fixed top-0 left-0 inset-0 bg-black bg-opacity-25 z-10"></div>
@@ -95,7 +95,8 @@
                     <ul>
                         @foreach ($families as $family)
                             <li wire:mouseover="$set('family_id', {{$family->id}})">
-                                <a class="flex items-center justify-between px-4 py-4 text-gray-700 hover:bg-[#a78771]" href="">
+                                <a class="flex items-center justify-between px-4 py-4 text-gray-700 hover:bg-[#a78771]" 
+                                href="{{route('families.show',$family)}}">
                                     {{$family->name}}
                                     <i class="fa-solid fa-angle-right "></i>
                                 </a>
@@ -111,20 +112,20 @@
                         <p class="border-b-[3px] border-gray-400 uppercase text-xl font-semibold pb-1">
                             {{$this->familyName}}
                         </p>
-                        <a class="btn btn-brown" href="">
+                        <a class="btn btn-brown" href="{{route('families.show',$family_id)}}">
                             Ver todo
                         </a>
                     </div>
                     <ul class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                         @foreach ($this->categories as $category)
                             <li>
-                                <a class="text-[#6a4b36] font-semibold text-lg" href="">
+                                <a class="text-[#6a4b36] font-semibold text-lg" href="{{route('categories.show', $category)}}">
                                     {{$category->name}}
                                 </a>
                                 <ul class="mt-4 space-y-2">
                                     @foreach ($category->subcategories as $subcategory)
                                         <li>
-                                            <a class="text-gray-700 text-sm hover:text-[#6a4b36]" href="">
+                                            <a class="text-gray-700 text-sm hover:text-[#6a4b36]" href="{{route('subcategories.show',$subcategory)}}">
                                                 {{$subcategory->name}}
                                             </a>
                                         </li>
@@ -138,4 +139,14 @@
             </div>
         </div>
     </div>
+
+    @push('js')
+        <script>
+            function search(value){
+                Livewire.dispatch('search',{
+                    search: value
+                })
+            }
+        </script>
+    @endpush
 </div>
