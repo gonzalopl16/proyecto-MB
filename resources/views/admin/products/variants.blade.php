@@ -25,7 +25,7 @@
         <x-validation-errors class="mb-4"></x-validation-errors>
         <div class="relative mb-6">
             <figure>
-                <img class="aspect-[16/9] w-full object-cover object-center" src="{{ $variant->image }}" alt=""
+                <img class="aspect-[1/1] w-full object-cover object-center" src="{{ $variant->image }}" alt=""
                     id="img">
             </figure>
 

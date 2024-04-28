@@ -62,7 +62,7 @@
                             <p class="text-gray-600 mb-4">
                                 S/.{{$product->price}}
                             </p>
-                            <a href="" class="btn btn-brown block w-full text-center">
+                            <a href="{{route('products.show',$product)}}" class="btn btn-brown block w-full text-center">
                                 ver más
                             </a>
                         </div>
